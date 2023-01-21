@@ -1,4 +1,4 @@
-var createAccountResponse = {
+export default createAccountResponse = {
 
     accountRegistered: "",
     accountDataValid: "",
@@ -9,5 +9,3 @@ var createAccountResponse = {
     emailValid: ""
 
 }
-
-module.exports = createAccountResponse;

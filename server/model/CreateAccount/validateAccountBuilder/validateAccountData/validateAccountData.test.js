@@ -1,4 +1,4 @@
-const validateAccountData = require("./validateAccountData.js");
+import validateAccountData from "./validateAccountData.js";
 
 var emailIsNotNullEmptyUndefined = (data) => {
     if(data.email) return true;
@@ -13,7 +13,7 @@ var passwordIsNotNullEmptyUndefined = (data) => {
 var validators = [emailIsNotNullEmptyUndefined, passwordIsNotNullEmptyUndefined];
 var nullValue;
 
-test("Return if email is valid", () => {
+test("Return if data is valid", () => {
     expect(validateAccountData({email: "email", password: "password"}, validators)).toBe(true);
     
     expect(validateAccountData({email: "email", password: nullValue}, validators)).toBe(false);

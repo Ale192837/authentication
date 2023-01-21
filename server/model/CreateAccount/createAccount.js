@@ -1,12 +1,8 @@
+import validateAccountDataBuilder from './validateAccountBuilder/validateAccountDataBuilder';
+import registerAccount from './registerAccount';
+
 function createAccount(accountData) {
     
-    // require modules --------------------------------------------------------
-
-    var validateAccountBuilder = require('./validateAccountBuilder/validateAccountDataBuilder');
-    var registerAccount = require('./registerAccount');
-
-
-
     // validate account data --------------------------------------------------
     
     var createAccountResponse;

@@ -1,36 +1,33 @@
-const validatePasswordRequest = require("./validatePasswordRequest");
-const responseCode = require("../../../createAccountResponse");
-
-var response = responseCode;
+import validatePassword from "./validatePassword";
 
 test("Return if password is valid or error code", () => {
 
     
-    var validatePasswordResponse = validatePasswordRequest("abcd1234", "abcd1234", response);
+    var validatePasswordResponse = validatePassword("abcd1234", "abcd1234");
     expect(validatePasswordResponse.passwordAndConfirmationAreEqual).toBe(true);
     expect(validatePasswordResponse.passwordValidCharactersOrNumberOfCharacters).toBe(true);
 
-    validatePasswordResponse = validatePasswordRequest("123", "123", response);
+    validatePasswordResponse = validatePassword("123", "123");
     expect(validatePasswordResponse.passwordAndConfirmationAreEqual).toBe(true);
     expect(validatePasswordResponse.passwordValidCharactersOrNumberOfCharacters).toBe(false);
     
-    validatePasswordResponse = validatePasswordRequest("1234abcd", "123abcde", response);
+    validatePasswordResponse = validatePassword("1234abcd", "123abcde");
     expect(validatePasswordResponse.passwordAndConfirmationAreEqual).toBe(false);
     expect(validatePasswordResponse.passwordValidCharactersOrNumberOfCharacters).toBe(true);
 
-    validatePasswordResponse = validatePasswordRequest("123;", "321a;", response);
+    validatePasswordResponse = validatePassword("123;", "321a;");
     expect(validatePasswordResponse.passwordAndConfirmationAreEqual).toBe(false);
     expect(validatePasswordResponse.passwordValidCharactersOrNumberOfCharacters).toBe(false);
 
-    validatePasswordResponse = validatePasswordRequest(undefined, "321a;", response);
+    validatePasswordResponse = validatePassword(undefined, "321a;");
     expect(validatePasswordResponse.passwordAndConfirmationAreEqual).toBe(false);
     expect(validatePasswordResponse.passwordValidCharactersOrNumberOfCharacters).toBe(false);
 
-    validatePasswordResponse = validatePasswordRequest("321a;", undefined, response);
+    validatePasswordResponse = validatePassword("321a;", undefined);
     expect(validatePasswordResponse.passwordAndConfirmationAreEqual).toBe(false);
     expect(validatePasswordResponse.passwordValidCharactersOrNumberOfCharacters).toBe(false);
 
-    validatePasswordResponse = validatePasswordRequest(undefined, undefined, response);
+    validatePasswordResponse = validatePassword(undefined, undefined);
     expect(validatePasswordResponse.passwordAndConfirmationAreEqual).toBe(false);
     expect(validatePasswordResponse.passwordValidCharactersOrNumberOfCharacters).toBe(false);
 

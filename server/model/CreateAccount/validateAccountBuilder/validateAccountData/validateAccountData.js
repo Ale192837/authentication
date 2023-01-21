@@ -1,10 +1,10 @@
-function validateAccountData(data, validators) {
+export default function validateAccountData(data, validators) {
 
-    var invalidData = false;
+    let invalidData = false;
 
     validators.forEach(validator => {
 
-        var checkedDataStatus = validator(data);
+        let checkedDataStatus = validator(data);
         
         if(checkedDataStatus == false){
             invalidData = true;
@@ -16,5 +16,3 @@ function validateAccountData(data, validators) {
     return !invalidData;
 
 }
-
-module.exports = validateAccountData;

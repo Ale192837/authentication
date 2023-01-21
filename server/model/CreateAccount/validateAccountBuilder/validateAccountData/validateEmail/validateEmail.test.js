@@ -1,4 +1,4 @@
-import validateEmail from "./validateEmail"; "./validateEmail.js";
+import validateEmail from "./validateEmail";
 
 test("Return if email is valid", () => {
     expect(validateEmail("aaaaaa@gmail.com")).toBe(true);

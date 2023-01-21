@@ -1,11 +1,9 @@
-function registerAccount(data){
+import setUser from "../databaseManager/setUser";
 
-    localStorage.setItem("username_" + data.username , data.username);
-    localStorage.setItem("email_" + data.email, data.email);
-    localStorage.setItem("password_"  + data.username, data.password);
+export default function registerAccount(data){
+
+    let userSetted = setUser(data);
     
-    return true; 
+    return userSetted; 
 
 }
-
-module.exports = registerAccount;

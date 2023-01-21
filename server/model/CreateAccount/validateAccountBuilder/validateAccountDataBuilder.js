@@ -1,22 +1,18 @@
-var responseCode = require("../createAccountResponse");
+import validateIfUsernameIsNotInUse from "./validateAccountData/validateUserName/validateIfUsernameIsNotInUse";
+import validateEmail from "./validateAccountData/validateEmail/validateEmail";
+import validatePassword from "./validateAccountData/validatePassword/validatePassword";
+import validateAccountData from "./validateAccountData/validateAccountData";
+import validateIfEmailIsNotInUse from "./validateAccountData/validateEmail/validateIfEmailIsNotInUse";
 
-
-function validateAccountDataBuilder(data) {
+export default function validateAccountDataBuilder(data) {
     
-    var response = responseCode;
-
-    var validateIfUsernameWasNotInUse = require("./validateAccountData/validateUserName/validateIfUsernameWasNotInUse");
-    var validateEmail = require("./validateAccountData/validateEmail/validateEmail");
-    var validateIfEmailWasNotInUse = require("./validateAccountData/validateEmail/validateIfEmailWasNotInUse");
-    var validatePassword = require("./validateAccountData/validatePassword/validatePasswordRequest");
-    var validateAccountData = require("./validateAccountData/validateAccountData");
-    
+    let response = {};
 
     var validateUsernameDecode = (data) => {
         
         if(data){
             
-            response = validateIfUsernameWasNotInUse(data.username, response);
+            response.usernameInUse = !validateIfUsernameIsNotInUse(data.username, response);
             
             return !response.usernameInUse;
 
@@ -28,7 +24,10 @@ function validateAccountDataBuilder(data) {
         
         if(data){
             
-            response = validatePassword(data.password, data.passwordConfirmation, response);
+            let passwordResponse = validatePassword(data.password, data.passwordConfirmation, response);
+            response.passwordAndConfirmationAreEqual = passwordResponse.passwordAndConfirmationAreEqual;
+            response.passwordValidCharactersOrNumberOfCharacters = passwordResponse.passwordValidCharactersOrNumberOfCharacters;
+
             var passwordValid = (response.passwordAndConfirmationAreEqual && response.passwordValidCharactersOrNumberOfCharacters);
             
             return passwordValid;
@@ -41,8 +40,8 @@ function validateAccountDataBuilder(data) {
         
         if(data){
             
-            response = validateEmail(data.email, response);
-            response = validateIfEmailWasNotInUse(data.email, response);
+            response.emailValid = validateEmail(data.email, response);
+            response.emailInUse = validateIfEmailIsNotInUse(data.email, response);
             return (response.emailValid && !response.emailInUse);
             
         }
@@ -61,5 +60,3 @@ function validateAccountDataBuilder(data) {
 
     return response;
 }
-
-module.exports = validateAccountDataBuilder;
