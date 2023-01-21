@@ -1,4 +1,6 @@
-class loginController{
+import loginBuilder from '../model/Login/loginBuilder';
+
+export default class loginController{
     
     constructor() {
         
@@ -9,9 +11,8 @@ class loginController{
     login(data) {
         
         if(data){
-            var loginService = require('../model/Login/loginBuilder');
 
-            this.logged = loginService(data.username, data.password);
+            this.logged = loginBuilder(data.username, data.password);
             console.log("controller logged: " + this.logged);
 
         }
@@ -20,7 +21,3 @@ class loginController{
     
    
 }
-
-
-
-module.exports = new loginController();
