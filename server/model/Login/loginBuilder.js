@@ -1,12 +1,10 @@
-var login =  require("./login");
-var getPassword = require('../databaseManager/getPassword');
+import login from "./login";
+import getPassword from "../databaseManager/getPassword";
 
-function loginBuilder(username, password){
+export default function loginBuilder(username, password){
 
-    var logged = login(username, password, getPassword);
+    let logged = login(username, password, getPassword);
 
     return logged;
 
 }
-
-module.exports = loginBuilder;
