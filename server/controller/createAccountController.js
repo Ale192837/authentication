@@ -11,7 +11,7 @@ export default class createAccountController{
     }
     
     createAccount(accountData) {
-        var createAccountModel = require("../CreateAccount/createAccount");
+        var createAccountModel = require("../model/CreateAccount/createAccount");
         
         var response = createAccountModel(accountData);
         
