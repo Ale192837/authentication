@@ -1,4 +1,4 @@
-class createAccountController{
+export default class createAccountController{
     
     constructor() {
         
@@ -11,7 +11,7 @@ class createAccountController{
     }
     
     createAccount(accountData) {
-        var createAccountModel = require("../model/CreateAccount/createAccount");
+        var createAccountModel = require("../CreateAccount/createAccount");
         
         var response = createAccountModel(accountData);
         
@@ -32,7 +32,3 @@ class createAccountController{
        
     }
 }
-
-
-
-module.exports = new createAccountController();

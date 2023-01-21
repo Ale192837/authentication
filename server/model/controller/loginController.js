@@ -1,4 +1,4 @@
-import loginBuilder from '../model/Login/loginBuilder';
+import loginBuilder from '../Login/loginBuilder';
 
 export default class loginController{
     
