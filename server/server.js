@@ -1,5 +1,6 @@
 require('dotenv-safe').config();
 require('module-alias/register');
 
-const app = require('@app');
+const boot = require('@service/boot');
 
+boot();

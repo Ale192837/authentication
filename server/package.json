@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "server": "nodemon server"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,10 @@
   "_moduleAliases": {
     "@": "src",
     "@app": "src/app.js",
-    "@controller": "src/controller"
+    "@config": "src/config",
+    "@controller": "src/controller",
+    "@helper": "src/helper",
+    "@service": "src/service",
+    "@model": "src/model"
   }
 }

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "ES3",
+        "allowSyntheticDefaultImports": false,
+        "baseUrl": "./",
+        "paths": {
+            "@app/*": ["src/*"],
+            "@controller/*": ["src/controller/*"],
+            "@helper/*": ["src/helper/*"],
+            "@service/*": ["src/service/*"],
+            "@model/*": ["src/model/*"],
+            "Shared/*": ["src/shared/*"],
+            "App/*": ["src/*"],
+        }
+    },
+    "exclude": ["node_modules", "dist"]
+}
