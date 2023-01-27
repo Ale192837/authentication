@@ -21,8 +21,6 @@
     "mysql2": "^3.0.1"
   },
   "_moduleAliases": {
-    "@": "src",
-    "@app": "src/app.js",
-    "@controller": "src/controller"
+    "@": "src"
   }
 }
