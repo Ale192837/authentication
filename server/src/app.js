@@ -1,8 +1,14 @@
 const express = require('express');
 const routes = require('./routes');
+const sendError = require('@helper/sendError');
 
 const app = express()
-const port = 3000
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(sendError);
+
+
 
 app.get('/login', (req, res) => {
   res.send('Hello World!')
