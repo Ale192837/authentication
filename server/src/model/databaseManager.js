@@ -25,19 +25,30 @@ const getUser = async function (username) {
 
     const connection = await connect();
     
-    const sql = 'SELECT * FROM customersdata WHERE UserName = ?;';
+    const sql = 'SELECT * FROM CustomersData WHERE UserName = ?;';
     const values = [username];
     const [user] = await connection.query(sql, values);
     return await user;
 
 }
 
-const setUser = async function (username, password) {
+const getEmail = async function (useremail) {
+
+    const connection = await connect();
+    
+    const sql = 'SELECT * FROM CustomersData WHERE UserEmail = ?;';
+    const values = [useremail];
+    const [user] = await connection.query(sql, values);
+    return await user;
+
+}
+
+const setUser = async function (username, password, useremail) {
     
     const connection = await connect();
     
-    const sql = 'INSERT INTO CustomersData (UserName, UserPassword) VALUES (?, ?)';
-    const values = [username, password];
+    const sql = 'INSERT INTO CustomersData (UserName, UserPassword, UserEmail) VALUES (?, ?, ?)';
+    const values = [username, password, useremail];
 
     await connection.query(sql, values);
 
@@ -47,22 +58,22 @@ const deleteUser = async function (username) {
     
     const connection = await connect();
     
-    const sql = 'DELETE FROM CustomersData WHERE UserName = ?';
+    const sql = 'BEGIN TRANSACTION DELETE FROM CustomersData WHERE UserName = ? IF @@ERROR = 0 COMMIT ELSE ROLLBACK END';
     const values = username;
 
     await connection.query(sql, values);
 
 }
 
-const updateUser = async function (username, newUsername, newPassword) {
+const updateUser = async function (username, newUsername, newPassword, newEmail) {
     
     const connection = await connect();
     
-    const sql = 'UPDATE CustomersData SET  UserName = ?, UserPassword = ? WHERE UserName = ?';
-    const values = [newUsername, newPassword, username];
+    const sql = 'UPDATE CustomersData SET  UserName = ?, UserPassword = ?, UserEmail = ? WHERE UserName = ?';
+    const values = [newUsername, newPassword, newEmail, username];
 
     await connection.query(sql, values);
 
 }
 
-module.exports = {setUser, getUser, deleteUser, updateUser};
+module.exports = {setUser, getUser, getEmail, deleteUser, updateUser};
