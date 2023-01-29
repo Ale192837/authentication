@@ -1,5 +1,8 @@
-import validateAccountDataBuilder from './validateAccountBuilder/validateAccountDataBuilder';
-import registerAccount from './registerAccount';
+// import validateAccountDataBuilder from './validateAccountBuilder/validateAccountDataBuilder';
+// import registerAccount from './registerAccount';
+
+const validateAccountBuilder = require('./validateAccountBuilder/validateAccountDataBuilder');
+const registerAccount = require('./registerAccount');
 
 function createAccount(accountData) {
     

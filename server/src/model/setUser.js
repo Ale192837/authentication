@@ -7,9 +7,11 @@ const setUser = function (connection, username, password) {
         sql,
         values,
         function (err, results, fields) {
-            console.log(results); // results contains rows returned by server
-            console.log(fields); // fields contains extra meta data about results, if available
+            console.log(results); 
+            console.log(fields); 
         }
     );
 
 }
+
+module.exports = setUser;

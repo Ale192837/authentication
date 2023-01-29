@@ -15,6 +15,6 @@ app.get('/login', (req, res) => {
   console.log("get express req")
 });
 
-app.get('/', routes);
+app.use('/', routes);
   
 module.exports = app;
