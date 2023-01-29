@@ -1,14 +1,14 @@
-let setUser = require("@model/setUser");
+let setUser = require("@model/databaseManager").setUser;
 
 const createAccountController = {
 
-    createAccount(req, res) {
+    async createAccount(req, res) {
     
         let username = req.body.username;
         let password = req.body.password;
 
         console.log(username, password);
-        let response = setUser(global.connection, username, password);
+        let response = await setUser(username, password);
         
         // this.accountRegistered = response.accountRegistered; 
         // this.passwordAndConfirmationAreEqual = response.passwordAndConfirmationAreEqual; 
