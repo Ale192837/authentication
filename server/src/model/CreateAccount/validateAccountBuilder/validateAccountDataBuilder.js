@@ -4,7 +4,7 @@ import validatePassword from "./validateAccountData/validatePassword/validatePas
 import validateAccountData from "./validateAccountData/validateAccountData";
 import validateIfEmailIsNotInUse from "./validateAccountData/validateEmail/validateIfEmailIsNotInUse";
 
-export default function validateAccountDataBuilder(data) {
+export default async function validateAccountDataBuilder(data) {
     
     let response = {};
 

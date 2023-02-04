@@ -1,7 +1,12 @@
-export default function validateIfEmailIsNotInUse(email, searchEmailInDatabase) {
+const thereEmailInDatabase = require('@model/databaseManager/databaseManager').getEmail();
 
-    let emailInUse = searchEmailInDatabase(email);
+export default async function validateIfEmailIsNotInUse(email) {
 
-    return emailInUse;
+    let queryResponse = await thereEmailInDatabase(email);
+    let emailNotInUse = (queryResponse == null);
+
+    console.log("query email: " + emailNotInUse);
+
+    return emailNotInUse;
     
 }

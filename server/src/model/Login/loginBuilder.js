@@ -1,5 +1,5 @@
 import login from "./login";
-import getPassword from "../databaseManager/getPassword";
+import getPassword from "../databaseManager/getPassword_local";
 
 export default function loginBuilder(username, password){
 

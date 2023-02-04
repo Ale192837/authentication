@@ -1,4 +1,4 @@
-let setUser = require("@model/databaseManager").setUser;
+let setUser = require("@app/model/databaseManager/databaseManager").setUser;
 
 const createAccountController = {
 
