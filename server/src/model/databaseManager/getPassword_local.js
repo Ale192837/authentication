@@ -1,4 +1,4 @@
-import decrypt from "./utils/decrypt";
+import decrypt from "../../helper/crypto/decrypt";
 
 export default function getPassword(username) {
 

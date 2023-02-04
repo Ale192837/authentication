@@ -1,4 +1,4 @@
-import encrypt from "./utils/encrypt";
+import encrypt from "../../helper/crypto/encrypt";
 
 export default function setUser(data){
 

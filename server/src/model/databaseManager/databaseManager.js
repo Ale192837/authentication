@@ -1,3 +1,6 @@
+const encrypt = require('@helper/crypto/encrypt'); 
+const decrypt = require('@helper/crypto/decrypt'); 
+
 async function connect() {
    
     if(global.connection && global.connection.state != "disconnected")
@@ -46,9 +49,11 @@ const getEmail = async function (useremail) {
 const setUser = async function (username, password, useremail) {
     
     const connection = await connect();
+
+    let passwordEncrypted = encrypt(password);
     
     const sql = 'INSERT INTO CustomersData (UserName, UserPassword, UserEmail) VALUES (?, ?, ?)';
-    const values = [username, password, useremail];
+    const values = [username, passwordEncrypted, useremail];
 
     await connection.query(sql, values);
 
