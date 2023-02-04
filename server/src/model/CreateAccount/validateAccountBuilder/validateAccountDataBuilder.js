@@ -1,10 +1,11 @@
-import validateIfUsernameIsNotInUse from "./validateAccountData/validateUserName/validateIfUsernameIsNotInUse";
-import validateEmail from "./validateAccountData/validateEmail/validateEmail";
-import validatePassword from "./validateAccountData/validatePassword/validatePassword";
-import validateAccountData from "./validateAccountData/validateAccountData";
-import validateIfEmailIsNotInUse from "./validateAccountData/validateEmail/validateIfEmailIsNotInUse";
+const validateIfUsernameIsNotInUse = require("./validateAccountData/validateUserName/validateIfUsernameIsNotInUse");
+const validateEmail = require("./validateAccountData/validateEmail/validateEmail");
+const validatePassword = require("./validateAccountData/validatePassword/validatePassword");
+const validateAccountData = require("./validateAccountData/validateAccountData");
+const validateIfEmailIsNotInUse = require("./validateAccountData/validateEmail/validateIfEmailIsNotInUse");
+// import validateIfEmailIsNotInUse from "./validateAccountData/validateEmail/validateIfEmailIsNotInUse";
 
-export default async function validateAccountDataBuilder(data) {
+const validateAccountDataBuilder = async function(data) {
     
     let response = {};
 
@@ -60,3 +61,5 @@ export default async function validateAccountDataBuilder(data) {
 
     return response;
 }
+
+module.exports = validateAccountDataBuilder;

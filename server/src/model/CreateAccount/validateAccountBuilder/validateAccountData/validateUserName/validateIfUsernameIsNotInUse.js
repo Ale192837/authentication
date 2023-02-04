@@ -1,7 +1,7 @@
 // import thereUsernameInDatabase from '../../../../databaseManager/thereUsernameInDatabase_local';
-const thereUsernameInDatabase = require("@app/model/databaseManager/databaseManager").getUser() 
+const thereUsernameInDatabase = require("@model/databaseManager/databaseManager").getUser;
 
-export default async function validateIfUsernameIsNotInUse(username) {
+const validateIfUsernameIsNotInUse = async function(username) {
 
 
     let queryResponse = await thereUsernameInDatabase(username);
@@ -10,3 +10,5 @@ export default async function validateIfUsernameIsNotInUse(username) {
     return usernameNotInUse;
     
 }
+
+module.exports = validateIfUsernameIsNotInUse;

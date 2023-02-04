@@ -1,4 +1,4 @@
-export default function validateEmail(email){
+const validateEmail =  function(email){
   
   let emailValid;
 
@@ -15,3 +15,5 @@ export default function validateEmail(email){
   return emailValid;
 
 }
+
+module.exports = validateEmail;

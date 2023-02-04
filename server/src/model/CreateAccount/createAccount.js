@@ -4,7 +4,7 @@
 const validateAccountBuilder = require('./validateAccountBuilder/validateAccountDataBuilder');
 const registerAccount = require('./registerAccount');
 
-function createAccount(accountData) {
+const createAccount = function (accountData) {
     
     // validate account data --------------------------------------------------
     

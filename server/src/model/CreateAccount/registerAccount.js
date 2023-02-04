@@ -1,10 +1,12 @@
 // import setUser from "../databaseManager/setUser";
 const setUser = require("@model/setUser");
 
-export default function registerAccount(data){
+const registerAccount = function(data){
 
     let userSetted = setUser(data);
     
     return userSetted; 
 
 }
+
+module.exports = registerAccount;

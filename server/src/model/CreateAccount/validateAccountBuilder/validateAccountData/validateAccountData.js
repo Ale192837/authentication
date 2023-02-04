@@ -1,4 +1,4 @@
-export default function validateAccountData(data, validators) {
+const validateAccountData = function(data, validators) {
 
     let invalidData = false;
 
@@ -16,3 +16,5 @@ export default function validateAccountData(data, validators) {
     return !invalidData;
 
 }
+
+module.exports = validateAccountData;

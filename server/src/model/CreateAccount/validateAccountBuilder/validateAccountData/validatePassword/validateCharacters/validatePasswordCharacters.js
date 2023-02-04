@@ -1,4 +1,4 @@
-export default function validatePasswordCharacters(password) {
+const validatePasswordCharacters = function(password) {
 
     // dont have space and ; " ' characters 
     // must have at last 8 chars and at max 32 chars 
@@ -11,3 +11,5 @@ export default function validatePasswordCharacters(password) {
     else return false;
 
 }
+
+module.exports = validatePasswordCharacters;

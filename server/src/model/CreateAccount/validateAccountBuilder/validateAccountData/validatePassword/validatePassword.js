@@ -1,7 +1,7 @@
-import comparePasswordAndConfirmation  from "./comparePasswordAndConfirmation/comparePasswordAndConfirmation";
-import validatePasswordCharacters from "./validateCharacters/validatePasswordCharacters";
+const comparePasswordAndConfirmation = require("./comparePasswordAndConfirmation/comparePasswordAndConfirmation");
+const validatePasswordCharacters = require("./validateCharacters/validatePasswordCharacters");
 
-export default function validatePassword(password, passwordConfirmation) {
+const validatePassword = function(password, passwordConfirmation) {
 
     let passwordAndConfirmationAreEqual = comparePasswordAndConfirmation(password, passwordConfirmation);
     let validCharacters = validatePasswordCharacters(password, passwordConfirmation);
@@ -13,3 +13,5 @@ export default function validatePassword(password, passwordConfirmation) {
     return response;
 
 }
+
+module.exports = validatePassword;

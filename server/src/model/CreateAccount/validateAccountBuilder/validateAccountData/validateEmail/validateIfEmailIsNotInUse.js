@@ -1,6 +1,6 @@
-const thereEmailInDatabase = require('@model/databaseManager/databaseManager').getEmail();
+const thereEmailInDatabase = require('@model/databaseManager/databaseManager').getEmail;
 
-export default async function validateIfEmailIsNotInUse(email) {
+const  validateIfEmailIsNotInUse = async function(email) {
 
     let queryResponse = await thereEmailInDatabase(email);
     let emailNotInUse = (queryResponse == null);
@@ -10,3 +10,5 @@ export default async function validateIfEmailIsNotInUse(email) {
     return emailNotInUse;
     
 }
+
+module.exports = validateIfEmailIsNotInUse;

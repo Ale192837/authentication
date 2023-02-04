@@ -1,4 +1,4 @@
-export default function comparePasswordAndConfirmation(password, passwordConfirmation) {
+const comparePasswordAndConfirmation = function(password, passwordConfirmation) {
     
     if(password && passwordConfirmation){
 
@@ -8,3 +8,5 @@ export default function comparePasswordAndConfirmation(password, passwordConfirm
     else return false;
     
 }
+
+module.exports = comparePasswordAndConfirmation;
