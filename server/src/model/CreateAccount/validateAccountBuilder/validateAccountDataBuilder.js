@@ -1,9 +1,7 @@
 const validateIfUsernameIsNotInUse = require("./validateAccountData/validateUserName/validateIfUsernameIsNotInUse");
 const validateEmailCharacters = require("./validateAccountData/validateEmail/validateEmailCharacters");
 const validatePassword = require("./validateAccountData/validatePassword/validatePassword");
-// const validateAccountData = require("./validateAccountData/validateAccountData");
 const validateIfEmailIsNotInUse = require("./validateAccountData/validateEmail/validateIfEmailIsNotInUse");
-// import validateIfEmailIsNotInUse from "./validateAccountData/validateEmail/validateIfEmailIsNotInUse";
 
 const validateAccountDataBuilder = async function(data) {
     
@@ -27,14 +25,6 @@ const validateAccountDataBuilder = async function(data) {
     );
     
     response.accountDataValid = accountDataIsValid;
-
-    console.log(`DataBuilder response.accountDataValid ${accountDataIsValid}`);
-    console.log(`DataBuilder response.usernameInUse ${response.usernameInUse}`);
-    console.log(`DataBuilder response.emailValid ${response.emailValidCharacters}`);
-    console.log(`DataBuilder response.emailInUse ${response.emailInUse}`);
-    console.log(`DataBuilder response.passwordValidCharactersOrNumberOfCharacters ${response.passwordValidCharactersOrNumberOfCharacters}`);
-
-
 
     return response;
 }
