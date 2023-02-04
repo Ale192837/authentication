@@ -19,10 +19,10 @@ const createAccount = async function (accountData) {
 
     let accountRegistered;
 
-    // if(accountDataValid){
-    //     accountRegistered = registerAccount(accountData);
-    // }
-    // else accountRegistered = false;
+    if(accountDataValid){
+        accountRegistered = await registerAccount(accountData);
+    }
+    else accountRegistered = false;
 
     createAccountResponse.accountRegistered = accountRegistered;
     

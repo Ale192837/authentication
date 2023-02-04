@@ -1,13 +1,13 @@
-// import setUser from "../databaseManager/setUser";
-// const setUser = require("@model/setUser");
 const setUser = require("@model/databaseManager/databaseManager").setUser;
+const getUser = require("@model/databaseManager/databaseManager").getUser;
 
-const registerAccount = function(data){
+const registerAccount = async function(data){
 
-    let userSetted = setUser(data.username, data.password, data.email);
-    console.log("user $data.username registered");
-    
-    return userSetted; 
+    await setUser(data.username, data.password, data.email);
+    let user = await getUser(data.username);
+    let userRegistered = (user != '');
+
+    return userRegistered; 
 
 }
 
