@@ -7,8 +7,6 @@ const setUser = function (connection, username, password) {
         sql,
         values,
         function (err, results, fields) {
-            console.log(results); 
-            console.log(fields); 
         }
     );
 
