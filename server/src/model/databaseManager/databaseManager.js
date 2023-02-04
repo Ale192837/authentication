@@ -28,7 +28,7 @@ const getUser = async function (username) {
     const sql = 'SELECT * FROM CustomersData WHERE UserName = ?;';
     const values = [username];
     const [user] = await connection.query(sql, values);
-    return await user;
+    return user;
 
 }
 

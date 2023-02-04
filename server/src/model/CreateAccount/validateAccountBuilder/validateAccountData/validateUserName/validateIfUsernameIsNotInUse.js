@@ -5,8 +5,8 @@ const validateIfUsernameIsNotInUse = async function(username) {
 
 
     let queryResponse = await thereUsernameInDatabase(username);
-    let usernameNotInUse = (queryResponse == null);
-    
+    let usernameNotInUse = (queryResponse == '');
+    console.log(`usernameNotInUse ${usernameNotInUse}`)
     return usernameNotInUse;
     
 }

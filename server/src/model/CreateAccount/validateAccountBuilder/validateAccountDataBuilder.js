@@ -1,7 +1,7 @@
 const validateIfUsernameIsNotInUse = require("./validateAccountData/validateUserName/validateIfUsernameIsNotInUse");
-const validateEmail = require("./validateAccountData/validateEmail/validateEmail");
+const validateEmailCharacters = require("./validateAccountData/validateEmail/validateEmailCharacters");
 const validatePassword = require("./validateAccountData/validatePassword/validatePassword");
-const validateAccountData = require("./validateAccountData/validateAccountData");
+// const validateAccountData = require("./validateAccountData/validateAccountData");
 const validateIfEmailIsNotInUse = require("./validateAccountData/validateEmail/validateIfEmailIsNotInUse");
 // import validateIfEmailIsNotInUse from "./validateAccountData/validateEmail/validateIfEmailIsNotInUse";
 
@@ -9,55 +9,32 @@ const validateAccountDataBuilder = async function(data) {
     
     let response = {};
 
-    var validateUsernameDecode = (data) => {
-        
-        if(data){
-            
-            response.usernameInUse = !validateIfUsernameIsNotInUse(data.username, response);
-            
-            return !response.usernameInUse;
+    let usernameNotInUse = await validateIfUsernameIsNotInUse(data.username);
+    response.usernameInUse = !usernameNotInUse;
 
-        }
-        else return false;
-    };
+    response.emailValidCharacters = validateEmailCharacters(data.email);
+    let emailNotInUse = await validateIfEmailIsNotInUse(data.email);
+    response.emailInUse = !emailNotInUse;
 
-    var validatePasswordDecode = (data) => {
-        
-        if(data){
-            
-            let passwordResponse = validatePassword(data.password, data.passwordConfirmation, response);
-            response.passwordAndConfirmationAreEqual = passwordResponse.passwordAndConfirmationAreEqual;
-            response.passwordValidCharactersOrNumberOfCharacters = passwordResponse.passwordValidCharactersOrNumberOfCharacters;
+    let passwordResponse = validatePassword(data.password, data.passwordConfirmation);
+    response.passwordValidCharactersOrNumberOfCharacters = passwordResponse.passwordValidCharactersOrNumberOfCharacters;
 
-            var passwordValid = (response.passwordAndConfirmationAreEqual && response.passwordValidCharactersOrNumberOfCharacters);
-            
-            return passwordValid;
-
-        }
-        else return false;
-    };
-    
-    var validateEmailDecode = (data) => {
-        
-        if(data){
-            
-            response.emailValid = validateEmail(data.email, response);
-            response.emailInUse = validateIfEmailIsNotInUse(data.email, response);
-            return (response.emailValid && !response.emailInUse);
-            
-        }
-        else return false;
-    }
-
-    var validators = [
-        
-        (data) => validateUsernameDecode(data),
-        (data) => validatePasswordDecode(data),
-        (data) =>  validateEmailDecode(data)];
-
-    var accountDataIsValid = validateAccountData(data, validators);
+    let accountDataIsValid = (
+        !response.usernameInUse &&
+        !response.emailInUse &&
+        response.emailValidCharacters &&
+        response.passwordValidCharactersOrNumberOfCharacters
+    );
     
     response.accountDataValid = accountDataIsValid;
+
+    console.log(`DataBuilder response.accountDataValid ${accountDataIsValid}`);
+    console.log(`DataBuilder response.usernameInUse ${response.usernameInUse}`);
+    console.log(`DataBuilder response.emailValid ${response.emailValidCharacters}`);
+    console.log(`DataBuilder response.emailInUse ${response.emailInUse}`);
+    console.log(`DataBuilder response.passwordValidCharactersOrNumberOfCharacters ${response.passwordValidCharactersOrNumberOfCharacters}`);
+
+
 
     return response;
 }

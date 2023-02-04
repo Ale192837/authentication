@@ -1,4 +1,4 @@
-import validateEmail from "./validateEmail";
+import validateEmail from "./validateEmailCharacters";
 
 test("Return if email is valid", () => {
     expect(validateEmail("aaaaaa@gmail.com")).toBe(true);

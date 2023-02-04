@@ -5,9 +5,10 @@ const createAccountController = {
 
     async createAccount(req, res) {
     
-        // let username = req.body.username;
+        let username = req.body.username;
         // let password = req.body.password;
 
+        console.log(username);
         // console.log(username, password);
         // let response = await setUser(username, password);
         
@@ -19,7 +20,7 @@ const createAccountController = {
         // this.usernameInUse = response.usernameInUse;
         // this.emailInUse = response.emailInUse;
 
-        let response = createAccount(req.data);
+        let response = await createAccount(req.body);
     
         res.send(response);
     

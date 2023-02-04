@@ -4,25 +4,25 @@
 const validateAccountBuilder = require('./validateAccountBuilder/validateAccountDataBuilder');
 const registerAccount = require('./registerAccount');
 
-const createAccount = function (accountData) {
+const createAccount = async function (accountData) {
     
     // validate account data --------------------------------------------------
     
-    var createAccountResponse;
+    let createAccountResponse;
 
-    createAccountResponse = validateAccountBuilder(accountData);
-    var accountDataValid = createAccountResponse.accountDataValid;
+    createAccountResponse = await validateAccountBuilder(accountData);
+    let accountDataValid = createAccountResponse.accountDataValid;
     
     
 
     // register account -------------------------------------------------------
 
-    var accountRegistered;
+    let accountRegistered;
 
-    if(accountDataValid){
-        accountRegistered = registerAccount(accountData);
-    }
-    else accountRegistered = false;
+    // if(accountDataValid){
+    //     accountRegistered = registerAccount(accountData);
+    // }
+    // else accountRegistered = false;
 
     createAccountResponse.accountRegistered = accountRegistered;
     

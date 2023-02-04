@@ -1,4 +1,4 @@
-const validateEmail =  function(email){
+const validateEmailCharacters =  function(email){
   
   let emailValid;
 
@@ -16,4 +16,4 @@ const validateEmail =  function(email){
 
 }
 
-module.exports = validateEmail;
+module.exports = validateEmailCharacters;
