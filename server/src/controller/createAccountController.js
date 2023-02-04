@@ -1,34 +1,13 @@
-export default class createAccountController{
-    
-    constructor() {
-        
-        this.accountRegistered = "";
-        this.passwordAndConfirmationAreEqual = "";
-        this.passwordValidCharactersOrNumberOfCharacters = "";
-        this.emailValid = "";
-        this.accountDataValid = "";
-        
-    }
-    
-    createAccount(accountData) {
-        var createAccountModel = require("../model/CreateAccount/createAccount");
-        
-        var response = createAccountModel(accountData);
-        
-        this.accountRegistered = response.accountRegistered; 
-        this.passwordAndConfirmationAreEqual = response.passwordAndConfirmationAreEqual; 
-        this.passwordValidCharactersOrNumberOfCharacters = response.passwordValidCharactersOrNumberOfCharacters; 
-        this.emailValid = response.emailValid; 
-        this.accountDataValid = response.accountDataValid; 
-        this.usernameInUse = response.usernameInUse;
-        this.emailInUse = response.emailInUse;
+const createAccount = require('@model/CreateAccount/createAccount');
 
-        Object.entries(this).forEach(field => {
-            const [key, value] = field;
-            console.log(key, value);
-        });
-        
+const createAccountController = {
 
+    async createAccount(req, res) {
+    
+        let response = await createAccount(req.body);
+        res.send(response);
        
     }
 }
+
+module.exports = createAccountController;
