@@ -1,7 +1,7 @@
-const validateIfUsernameIsNotInUse = require("./validateAccountData/validateUserName/validateIfUsernameIsNotInUse");
+const validateIfUsernameIsNotInUse = require("./validateAccountData/validateUserName/checkUsernameAvailable");
 const validateEmailCharacters = require("./validateAccountData/validateEmail/validateEmailCharacters");
 const validatePassword = require("./validateAccountData/validatePassword/validatePassword");
-const validateIfEmailIsNotInUse = require("./validateAccountData/validateEmail/validateIfEmailIsNotInUse");
+const validateIfEmailIsNotInUse = require("./validateAccountData/validateEmail/checkEmailAvailable");
 
 const validateAccountDataBuilder = async function(data) {
     

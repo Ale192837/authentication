@@ -16,13 +16,6 @@ app.get('/login', (req, res) => {
 });
 
 
-const test = require('@model/getUser');
-app.post('/test', async (req, res) => {
-  res.send('Test!')
-  const user = await test(req.body.username);
-  console.log("user: " + user);
-});
-
 app.use('/', routes);
   
 module.exports = app;

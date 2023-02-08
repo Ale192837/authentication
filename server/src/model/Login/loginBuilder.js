@@ -1,5 +1,7 @@
 import login from "./login";
-import getPassword from "../databaseManager/getPassword_local";
+const getPassword = require("../databaseManager/databaseManager").getUser;
+
+
 
 export default function loginBuilder(username, password){
 

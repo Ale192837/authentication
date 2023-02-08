@@ -1,7 +1,5 @@
 export default function login(username, password, searchPasswordInDatabase){
 
-   
-
     let passwordInDatabase = searchPasswordInDatabase(username);
 
     if(passwordInDatabase == null){
@@ -11,6 +9,5 @@ export default function login(username, password, searchPasswordInDatabase){
     let passwordMatch = (password == passwordInDatabase);
     
     return passwordMatch;
-
 
 }

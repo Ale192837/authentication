@@ -24,6 +24,18 @@ async function connect() {
 
 
 
+const logUser = async function (username, userPassword){
+
+    const connection = await connect();
+    
+    const sql = 'SELECT * FROM CustomersData WHERE UserName = ? AND UserPassword = ?';
+    const values = [username, userPassword];
+    const [user] = await connection.query(sql, values);
+    
+    return user;
+
+}
+
 const getUser = async function (username) {
 
     const connection = await connect();
@@ -35,14 +47,14 @@ const getUser = async function (username) {
 
 }
 
-const getEmail = async function (useremail) {
+const checkEmailExists = async function (useremail) {
 
     const connection = await connect();
     
-    const sql = 'SELECT * FROM CustomersData WHERE UserEmail = ?;';
+    const sql = 'SELECT UserEmail FROM CustomersData WHERE UserEmail = ?;';
     const values = [useremail];
-    const [user] = await connection.query(sql, values);
-    return await user;
+    const [email] = await connection.query(sql, values);
+    return await email;
 
 }
 
@@ -81,4 +93,4 @@ const updateUser = async function (username, newUsername, newPassword, newEmail)
 
 }
 
-module.exports = {setUser, getUser, getEmail, deleteUser, updateUser};
+module.exports = {logUser, setUser, getUser, getEmail: checkEmailExists, deleteUser, updateUser};
